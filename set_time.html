@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Coding for Time Lords</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Time Travel!</h1>
+  </header>
+
+  <div id="time-travel" class="left">
+    <p>The RTC boards were taught the correct time, and will be able to keep track of it for a long time.</p>
+    <p>You can teach them a different time, to make the micro:bit think that it is 100 years ago, or 20 years in the future!</p>
+    <p>The instruction to set the time is in this line:</p>
+    <pre>set_time(0, 0, 10, 6, 15, 1, 2022)</pre>
+    <br>
+    <p>These numbers are, in order:</p>
+    <ul>
+        <li>seconds</li>
+        <li>minutes</li>
+        <li>hours (10 = 10 o'clock)</li>
+        <li>week day (6 = Saturday)</li>
+        <li>day</li>
+        <li>month (1 = January)</li>
+        <li>year</li>
+    </ul>
+    <p>When we set them, the RTCs were told it was <strong>10 o'clock on Saturday 15th January, 2022</strong>.</p>
+    <p>When do you want the micro:bit to think it is?<p>
+    <br>
+    <p>Decide on a date, then find out what day of the week it was or will be on that date.</p>
+    <p>For example, if I want the micro:bit to think that it is the time that Neil Armstrong landed on the Moon...</p>
+    <p><a href="https://search.kidzsearch.com/kzsearch.php?v=desktop&q=what+time+did+neil+armstrong+land+on+the+moon+uk&image.x=0&image.y=0#gsc.tab=0&gsc.q=what%20time%20did%20neil%20armstrong%20land%20on%20the%20moon%20uk&gsc.page=1" target="_blank">In UK time</a>, that was 3:56 on Monday 21st July 1969.</p>
+    <ul>
+        <li>seconds = 0</li>
+        <li>minutes = 56</li>
+        <li>hours = 3</li>
+        <li>week day = 1</li>
+        <li>day = 21</li>
+        <li>month = 7</li>
+        <li>year = 1969</li>
+    </ul>
+    <p>So I would change the line of code to look like this:</p>
+    <pre>set_time(0, 56, 3, 1, 21, 7, 1969)</pre>
+    <br>
+    <br>
+    <p>Choose your own date and time, in the past or the future - <a href="https://www.timeanddate.com/date/weekday.html" target="_blank">remember to work out what day of the week it would be on that day!</a></p>
+    <p>The <code>set_time()</code> should be line 21 in your program - it will look green at the moment because the micro:bit has been told to ignore it!</p>
+    <ul>
+        <li>Edit the line to be your new date and time.</li>
+        <li>Delete the three quotes <code>'''</code> on line 15.</li>
+        <li>Delete the three quotes <code>'''</code> on line 22.</li>
+    </ul>
+    <br>
+    <p><strong>When you flash your code, the micro:bit will go back or forward in time, and start timing from your chosen date!</strong></p>
+    <br>
+  </div>
+
+  <nav class="links bg_pink">
+    <a href="index.html" target="_blank">Go Back</a>
+  </nav>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/rtc/" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
