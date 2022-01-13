@@ -64,6 +64,7 @@ while True:
         time = get_time()
         display.scroll(time['year'])
     if button_b.was_pressed():
+        time = get_time()
         if time['weekday'] == '1':
             display.scroll('Today is Monday')
         if time['weekday'] == '2':

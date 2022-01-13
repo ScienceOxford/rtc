@@ -27,11 +27,12 @@
     <h3>More if statements!</h3>
     <p>To ask the micro:bit to tell us the day of the week, we need to use more if statements:</p>
     <pre>if time['weekday'] == '6':
-        display.scroll('Today is Saturday')</pre>
+    display.scroll('Today is Saturday')</pre>
     <br>
     <p>This asks, is the weekday 6? If that is true, then tell us that today is Saturday.</p>
     <p>You can expand this with all of the days of the week. For example:</p>
     <pre>if button_b.was_pressed():
+    time = get_time()
     if time['weekday'] == '6':
         display.scroll('Today is Saturday')
     if time['weekday'] == '7':
@@ -50,6 +51,7 @@ while True:
         display.scroll(time['year'])
 
     if button_b.was_pressed():
+        time = get_time()
         if time['weekday'] == '1':
             display.scroll('Today is Monday')
         if time['weekday'] == '2':
