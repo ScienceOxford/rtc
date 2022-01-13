@@ -16,7 +16,7 @@
 
   <div id="intro">
     <p>Resources for the 'Coding for Time Lords' Creative Computing Club.</p>
-    <p>During this workshop, you will ...</p>
+    <p>During this workshop, you will use a BBC micro:bit and some extra electronics to make an alarm clock.</p>
     <p>This page recaps what <a href="https://bit.ly/Jan22CCC" target="_blank">we discussed as a group</a>.</p>
     <p>To skip to the examples and ideas, <a href="#extensions">click here</a>.</p>
     <br>
@@ -38,39 +38,107 @@ display.show(Image.HAPPY)</pre>
     <p>Once your code is working - change it!</p>
     <p>Instead of <code>HAPPY</code>, can you think of another <code>Image</code> the micro:bit could <code>show</code> on its <code>display</code>?</p>
     <br>
+    <p>If you have a micro:bit v2, you can use the built in speaker to play some audio files.</p>
+    <p>Edit your code to add in two new lines, in between the original two:</p>
+    <pre>import audio
+audio.play(Sound.GIGGLE)</pre>
+    <br>
+    <p>Your finished code should look like this:</p>
+    <pre>from microbit import *
+import audio
+audio.play(Sound.GIGGLE)
+display.show(Image.HAPPY)</pre>
+    <br>
+    <p>Try some different Sound files, <a href="https://microbit-micropython.readthedocs.io/en/v2-docs/audio.html#built-in-sounds-v2" target="_blank">a list is here</a>.</p>
+    <p><strong>What happens if you change the order</strong> of the last two lines, so that the <code>display.show()</code> comes before <code>audio.play()</code>?</p>
+    <p>Remember to <strong>Flash</strong> your code every time you make changes.<p>
+    <br>
   </div>
 
   <div id="wiring-rtc" class="left">
     <h3>Connecting your Real Time Clock</h3>
-    <p>...</p>
+    <p>You now know how to use the micro:bit's display, and it's speaker - these are both useful for a clock.</p>
+    <p>The micro:bit cannot tell time by itself, it needs some extra electronics - a board called a 'Real Time Clock', or RTC.</p>
+    <p>If you are in Science Oxford's workshop, we will have connected the RTC to a connector - push your micro:bit into the connector like in the picture below.</p>
+    <p>INSERT IMAGE HERE</p>
+    <br>
+    <p>If you are doing this at home, <a href="http://www.multiwingspan.co.uk/micro.php?page=rtc" target="_blank">see multiwingspan's guide</a> to get your parts connected.</p>
     <br>
   </div>
 
   <div id="coding-rtc" class="left">
     <h3>The starter code</h3>
-    <p>...</p>
+    <p>To get the RTC working correctly, you need some set-up code.</p>
+    <p>Download the starter code (<a href="http://www.multiwingspan.co.uk/micro.php?page=rtc" target="_blank">adapted from multiwingspan's</a>) here: <a href="https://raw.githubusercontent.com/ScienceOxford/rtc/main/examples/starter.py" download>starter.py</a></p>
+    <br>
+    <p><strong>Do not edit the code at the top for now.</strong></p>
+    <p>Your code begins at line 60, and looks like this:</p>
+    <pre>display.show(Image.DUCK)
+sleep(1000)
+while True:
+    if button_a.is_pressed():
+        time = get_time()
+        display.scroll(time['year'])
+    else:
+        display.clear()
+        sleep(100)</pre>
+    <br>
+    <p>Before making any changes, run the code and try it out.</p>
+    <ul>
+        <li>What happens when you press the micro:bit's A button, and why?</li>
+        <li>Can you change the image that displays at the beginning?</li>
+        <li>Which line would you need to change to display an image whenever the year isn't being shown?</li>
+        <li>Can you add a Sound back in? Where would you put it to play at the start, or only when the year is shown?</li>
+    </ul>
+    <br>
+    <p>Try changing the code so it displays the month, or hour, instead of the year (you will learn how to show more than one at once in the next step).</p>
+    <p>Your options are:</p>
+    <ul>
+        <li><code>'year'</code></li>
+        <li><code>'month'</code></li>
+        <li><code>'day'</code></li>
+        <li><code>'hours'</code></li>
+        <li><code>'minutes'</code></li>
+        <li><code>'seconds'</code></li>
+    </ul>
+    <p>Don't miss out the quote marks around the words!</p>
     <br>
   </div>
 
-  <div id="next" class="left">
-    <h3>...</h3>
-    <p>...</p>
+  <div id="time" class="left">
+    <h3>Showing the time</h3>
+    <p>So far, you have put one piece of information on the micro:bit at once.</p>
+    <p>To make a proper clock, you need be able to merge at least two things together - <code>time['hours']</code> and <code>time['minutes']</code>.</p>
+    <p>The information looks like a number, but it is actually a type of data called a <strong>string</strong>.</p>
+    <p>You can't do maths with strings, but you can stick them together!</p>
+    <br>
+    <p>Take a look at this line of code:</p>
+    <pre>display.scroll(time['hours'] + ':' + time['minutes'])</pre>
+    <br>
+    <p>The plus symbol is used to add numbers together like normal maths, but when used with strings, it <strong>concatenates</strong> them.</p>
+    <p>It sticks them together with a ':' in the middle.</p>
+    <p><strong>Replace your current display line with this one, and see it in action.</strong></p>
+    <br>
+    <p>Can you do a similar thing with the date? How would you merge <strong>three</strong> pieces of information?</p>
     <br>
   </div>
 
   <div id="extensions" class="left">
     <h3>What next?</h3>
-    <p>...</p>
+    <p>You have a basic clock now, what do you want to add next?</p>
     <ul>
-        <li>...</li>
+        <li>Can you rearrange the code, so that your micro:bit <strong>always</strong> shows the time of day?</li>
+        <li>Can you add in Button B?</li>
     </ul>
     <p>The links below give you some other ideas of things you could add to your project.</p>
     <br>
   </div>
 
   <nav class="links bg_green">
-    <a href="" target="_blank">...</a>
-    <a href="" target="_blank">...</a>
+    <a href="alarm.html" target="_blank">add an alarm</a>
+    <a href="set_time.html" target="_blank">time travel!</a>
+    <a href="changing_images.html" target="_blank">show images based on the time of day</a>
+    <a href="weekday.html" target="_blank">show the day of the week</a>
   </nav>
 
   <footer class="links">
