@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Coding for Time Lords</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Using images to tell the time of day</h1>
+  </header>
+
+  <div id="where" class="left">
+    <h3>Finding the day of the week</h3>
+    <p>The time function stores one extra piece of information we haven't used yet - what day of the week it is:</p>
+    <pre>time['weekday']</pre>
+    <br>
+    <p>If you ask the micro:bit to display this, it will give you a number - Monday is 1, Saturday is 6.</p>
+    <br>
+  </div>
+
+  <div id="what" class="left">
+    <h3>More if statements!</h3>
+    <p>To do different things at different times of the day, you need to make some comparisons.</p>
+    <p>We first need to convert the hours into a number, so that we can do some maths with it:</p>
+    <pre>int(time['hours'])</pre>
+    <br>
+    <p>This converts the <strong>string</strong> into an <strong>integer</strong>, which means a whole number.</p>
+    <p>Now we can compare the current time, for example by asking if it is <strong>after midnight, but before midday</strong>:</p>
+    <pre>if 0 <= int(time['hours']) < 12:
+    display.show(Image.YES)</pre>
+    <br>
+    <ul>
+        <li><= means greater than or equal to</li>
+        <li>< means greater than but not equal to</li>
+    </ul>
+    <p>In the above statement we are asking the micro:bit if the hour is 0 or more (so it is after midnight), and also if 12 is more than the hour (so it hasn't reached midday yet). If both of these things are true, we get an image shown.</p>
+    <p>A good place to put this code is in your <code>else</code> statement - so the micro:bit will check every time it loops.</p>
+    <p>You will need to take away the <code>display.clear()</code> line of code to make sure your images are displayed.</p>
+    <br>
+    <p>A full version of this code is below for you to add to your program, modify, and test.</p>
+    <br>
+    <pre>display.show(Image.DUCK)
+sleep(1000)
+
+while True:
+    if button_a.is_pressed():
+        time = get_time()
+        display.scroll(time['year'])
+
+    else:
+        time = get_time()
+        if 0 <= int(time['hours']) < 12:
+            display.show(Image.YES)
+        if 12 <= int(time['hours']) < 0:
+            display.show(Image.NO)
+
+        sleep(100)</pre>
+    <br>
+    <p><a href="https://raw.githubusercontent.com/ScienceOxford/rtc/main/examples/images.py" target="_blank">Download the example here.</a></p>
+  </div>
+
+  <nav class="links bg_pink">
+    <a href="index.html" target="_blank">Go Back</a>
+  </nav>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/rtc/" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
