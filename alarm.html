@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Coding for Time Lords</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Adding an Alarm</h1>
+  </header>
+
+  <div id="choose-time" class="left">
+    <h3>Setting your alarm time</h3>
+    <p>You need to use variables to set the time your alarm should go off.</p>
+    <p><strong>Before your while True loop</strong>, add two new lines:</p>
+    <pre>alarm_hour = '11'
+alarm_minute = '30'</pre>
+    <br>
+    <p>This tells the micro:bit that you want the alarm to go off at half past 11 - change the numbers in the quote marks to pick your alarm time.</p>
+    <p class=debugging><strong>While you are testing your code, keep changing this to be in 1 minute's time!</strong></p>
+    <br>
+  </div>
+
+  <div id="set-if" class="left">
+    <h3>Comparing the times</h3>
+    <p>You need to ask the micro:bit to compare the current time, to your alarm's time, so it knows whether to go off or not.</p>
+    <p>A good place to do this is in your <code>else</code> statement - so the micro:bit will check every time it loops.</p>
+    <p>To compare things in Python, you use a double equals sign, like this:</p>
+    <pre>time['hours'] == alarm_hour</pre>
+    <br>
+    <p>This line asks if the two things are the same (is the current hour the same as the alarm's hour?).</p>
+    <p>To use this in your code, you can use another <code>if</code> statement:</p>
+    <pre>time = get_time()
+if time['hours'] == alarm_hour:
+    audio.play(Sound.TWINKLE)</pre>
+    <br>
+    <p>This only compares the hour, not the minutes!</p>
+    <p>So it needs expanding with an <code>and</code>:</p>
+    <pre>time = get_time()
+if time['hours'] == alarm_hour and time['minutes'] == alarm_minute:
+    audio.play(Sound.TWINKLE)</pre>
+    <br>
+    <p>If this code is inside your <code>else</code> block, which runs every loop unless you press a button, the alarm will go off once your chosen time is reached.</p>
+    <p>A full version of this code is below for you to add to your program, modify, and test.</p>
+    <br>
+    <pre>display.show(Image.DUCK)
+sleep(1000)
+
+alarm_hour = '11'
+alarm_minute = '30'
+
+while True:
+    if button_a.is_pressed():
+        time = get_time()
+        display.scroll(time['year'])
+
+    else:
+        time = get_time()
+        if time['hours'] == alarm_hour and time['minutes'] == alarm_minute:
+            audio.play(Sound.TWINKLE)
+
+        display.clear()
+        sleep(100)</pre>
+    <br>
+    <p><a href="https://raw.githubusercontent.com/ScienceOxford/rtc/main/examples/alarm.py" target="_blank">Download the example here.</a></p>
+  </div>
+
+  <nav class="links bg_pink">
+    <a href="index.html" target="_blank">Go Back</a>
+  </nav>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/rtc/" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
