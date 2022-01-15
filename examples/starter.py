@@ -12,15 +12,6 @@ def dec2bcd(dec):
     tens, units = divmod(dec, 10)
     return (tens << 4) + units
 
-'''
-def set_time(s,m,h,w,dd,mm,yy):
-    t = bytes([s,m,h,w,dd,mm,yy-2000])
-    for i in range(0,7):
-        i2c.write(addr, bytes([i,dec2bcd(t[i])]), repeat=False)
-    return
-set_time(0,0,10,6,15,1,2022)
-'''
-
 def get_time():
     i2c.write(addr, b'\x00', repeat=False)
     buf = i2c.read(addr, 7, repeat=False)
@@ -49,6 +40,15 @@ def get_time():
 addr = 0x68
 buf = bytearray(7)
 
+'''
+def set_time(s,m,h,w,dd,mm,yy):
+    t = bytes([s,m,h,w,dd,mm,yy-2000])
+    for i in range(0,7):
+        i2c.write(addr, bytes([i,dec2bcd(t[i])]), repeat=False)
+    return
+set_time(0,0,10,6,15,1,2022)
+'''
+
 
 
 
@@ -60,7 +60,7 @@ buf = bytearray(7)
 display.show(Image.DUCK)
 sleep(1000)
 while True:
-    if button_a.is_pressed():
+    if button_a.was_pressed():
         time = get_time()
         display.scroll(time['year'])
     else:
